@@ -5,21 +5,13 @@ public class Collatz {
 
     /** Buggy implementation of nextNumber! */
     public static int nextNumber(int n) {
-<<<<<<< HEAD
+
         if (n % 2 == 0) {
             return n / 2;
         }
         return 3 * n + 1;
 
-=======
-        if (n  == 128) {
-            return 1;
-        } else if (n == 5) {
-            return 3 * n + 1;
-        } else {
-            return n * 2;
-        }
->>>>>>> 571d8144c3dc0583060a00a5cba506a8a1dd03c2
+
     }
 
     public static void main(String[] args) {
