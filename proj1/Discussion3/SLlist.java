@@ -1,26 +1,41 @@
 package Discussion3;
 
-public class SLlist {
-
-    public SLlist(int i) {
+public class SLlist <T>{
+    private int size;
+    public SLlist(T i) {
         first = new IntNode(i,null);
+        size = 0;
     }
 
-    private class IntNode{
-        public int item;
+    public int size() {
+        return size;
+    }
+
+    public T get(int maxIndex) {
+        IntNode res = null;
+        if(maxIndex < 0 || maxIndex > size) return null;
+        for (int i = 0;i <= maxIndex;i++){
+            res = first.next;
+        }
+        return (T) res.item;
+    }
+
+    private class IntNode<T>{
+        public T item;
         public IntNode next;
-        public IntNode(int item,IntNode next){
+        public IntNode(T item,IntNode next){
             item = item;
             next = next;
         }
     }
 
     private IntNode first;
-    public void addFirst(int x){
+    public void addFirst(T x){
         first = new IntNode(x,first);
+        size++;
     }
 
-    public void insert(int item,int position){
+    public void insert(T item,int position){
         if(first == null || position == 0) {
             addFirst(item);
             return;
@@ -33,6 +48,7 @@ public class SLlist {
         }
         IntNode node = new IntNode(item,currentNode.next);
         currentNode.next = node;
+        size++;
     }
     public void reverse(){
         if(first == null || first.next == null){

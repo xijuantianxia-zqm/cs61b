@@ -53,7 +53,7 @@ public class Government {
         }
     }
 
-    public static class Thief {
+    public  class Thief {
         public void doStuff() {
             treasury = 0;
         }
