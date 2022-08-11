@@ -4,7 +4,7 @@ package deque;
 import java.util.Deque;
 import java.util.Iterator;
 
-public class LinkedListDeque<T>{
+public class LinkedListDeque<T> implements deque.Deque<T> {
     private final Node<T> head = new Node<>(null, null, null);
     private int size;
 
@@ -33,18 +33,21 @@ public class LinkedListDeque<T>{
         size = 1;
     }
 
+    @Override
     public void addFirst(T i) {
         head.next = new Node<T>(i, head, head.next);
         head.next.next.prev = head.next;
         size++;
     }
 
+    @Override
     public void addLast(T i) {
         head.prev = new Node<>(i, head.prev, head);
         head.prev.prev.next = head.prev;
         size++;
     }
 
+    @Override
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -57,6 +60,7 @@ public class LinkedListDeque<T>{
         return item;
     }
 
+    @Override
     public T removeLast() {
         if (isEmpty()) {
             return null;
@@ -69,6 +73,7 @@ public class LinkedListDeque<T>{
         return item;
     }
 
+    @Override
     public T get(int index) {
         if (index < 0 || index > size - 1) {
             return null;
@@ -97,15 +102,13 @@ public class LinkedListDeque<T>{
         return getRecursive(index - 1, currentNode.next);
     }
 
+    @Override
     public int size() {
         return size;
     }
 
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
+    @Override
     public void printDeque() {
         Node<T> currentNode = head.next;
         while (currentNode.next != head) {
